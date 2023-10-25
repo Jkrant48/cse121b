@@ -63,7 +63,24 @@ const getTouristSites = async() => {
     displayTouristSites(touristlist);
 };
 
+const sort = (Destinations) => {
+    const filter = document.querySelector("#sort").Value;
+    switch (filter) {
+        case "GreaterAccra" :
+            displayTouristSites(Destinations.filter((destination) => destination.location.includes("Greater Accra")));
+            break;
+        case "EasternRegion" :
+            displayTouristSites(Destinations.filter((destination) => destination.location.includes("Eastern Region")));
+            break;
+        case "VoltaRegion" :
+            displayTouristSites(Destinations.filter((destination) => destination.location.includes("Volta Region")));
+            break;
+        default :
+            displayTouristSites(touristlist);
+    }
+}
 
+document.querySelector("#sort").addEventListener("change", () => {sort(touristlist); });
 
 getTouristSites();
 
